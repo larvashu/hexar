@@ -1,0 +1,17 @@
+Test pojedyńczy - Zależny od wyniku rzutu na jeden atrybut
+Test podwójny - Zależny od wyniku rzutów na dwa atrybuty. Rzuca się kolejno na Siłę i zręcznośc.
+
+ST - skala trudności
+
+Atak - 1PA
+[+modyfikatory np.]
+Atak 2h - 2PA
+Celowanie - 1PA (+1 do Ataku; wybierasz w którą część trafisz)
+
+###########
+[Tylko atakowana jednostka; ST jest suma sukcesów w rzutach atakującego]
+Unik (Zr) - unikasz ciosu - 2 PA; możesz przemieścić sie o jeden hex;
+Parowanie (Kondycja) - odbijasz cios; @dodatkowy rzut: (Siła) (10) - Jeśli atakujący posiada broń, zostaje rozbrojony - 2 PA
+Blok - (Wymagane: Tarcza)(Obrona) (* ST-1) 2PA - blokujesz cios @dodatkowy rzut: (Siła) (10); odpychasz lub powalasz wroga
+###########
+
