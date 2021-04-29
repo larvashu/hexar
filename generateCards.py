@@ -20,19 +20,26 @@ def draw_card(entity):
     my_image = Image.open(f"imgs/backgrounds/{entity['type']}.jpg").resize((900,1000))
     image = Image.open("imgs/backgrounds/Scroll.jpg").resize((835, 350))
     overhowl = Image.open("imgs/backgrounds/overhoul.jpg")
+    image_editable = ImageDraw.Draw(overhowl)
+
+
     overhowl = overhowl.convert("RGBA")
     ############
     datas = overhowl.getdata()
 
+    label_font = ImageFont.truetype('fonts/AQS.ttf', 20)
+    name_font = ImageFont.truetype('fonts/AQS.ttf', 16)
+    statsFont = ImageFont.truetype('fonts/LittleLordFontleroyNF.ttf', 100)
+    valFont = ImageFont.truetype('fonts/LittleLordFontleroyNF.ttf', 85)
+
     my_image = my_image.convert("RGBA")
-    statsFont = ImageFont.truetype('fonts/LittleLordFontleroyNF.ttf', 125)
 
-    image_editable = ImageDraw.Draw(my_image)
 
-    image_editable.text((700, 121), "1", (0, 0, 0), font=statsFont)
+
 
     my_image=my_image.resize((900, 1000))
     overhowl=overhowl.resize((900, 1000))
+
 
     datas = overhowl.getdata()
 
@@ -69,12 +76,31 @@ def draw_card(entity):
                 newData2.append(item)
         a.putdata(newData2)
 
+    ##for red cards
+    if entity['type'] == 'hunt':
+        for item in datas2:
+            if item[0] > 240 and item[1] > 240 and item[2] > 240:
+                newData2.append((100, 155, 77, 0))
+            else:
+                newData2.append(item)
+        a.putdata(newData2)
+
     skill_img = Image.open(f"imgs/spells/{entity['name']}.jpg")
     skill_img = skill_img.resize((623, 465))
     a.paste(skill_img, (130, 150))
     a = a.resize((238, 333))
+
     a.save(f"target/{entity['name']}.jpg")
         ##########
+
+    add = Image.open(f"target/{entity['name']}.jpg")
+    edit = ImageDraw.Draw(add)
+    print(str(edit))
+    print(entity['ap_cost'])
+    edit.text((0, -35), entity['ap_cost'], (0, 0, 133), font=statsFont)
+    edit.text((70, 5), entity['name'], (0, 0, 0), font=name_font)
+    edit.text((195, -35), entity['cooldown'], (0, 0, 0), font=statsFont)
+    add.save(f"target/{entity['name']}.jpg")
 
 
 with open('db/spells.csv', newline='') as f:
