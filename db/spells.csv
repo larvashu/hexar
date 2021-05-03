@@ -1,4 +1,4 @@
 name,ap_cost,cooldown,type,text
 fireball,2,4,fire,Deal 1k6 damage.
-heal,2,3,nature,nic
-fireball2,1,1,hunt,nic
+heal,2,3,nature,Restore {INT} + 1k6 health.             Range: 5
+
