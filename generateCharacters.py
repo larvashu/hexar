@@ -83,13 +83,13 @@ def draw_card(entity):
     for i in range(to_hit + 1):
         image_editable.text((y_axis_base - i * 69, 1055), "X", (0, 0, 0), font=valFont)
 
-    my_image.save(f"target/{entity['name']}.jpg")
+    my_image.save(f"target/characters/{entity['name']}.jpg")
     ##########
+def generate():
+    with open('db/mobs.csv', newline='') as f:
+      reader = pd.read_csv(f)
+      for index, row in reader.iterrows():
+          entity = get_entity(row)
 
-with open('db/mobs.csv', newline='') as f:
-  reader = pd.read_csv(f)
-  for index, row in reader.iterrows():
-      entity = get_entity(row)
-
-      draw_card(entity)
+          draw_card(entity)
 

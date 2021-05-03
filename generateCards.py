@@ -84,10 +84,10 @@ def draw_card(entity):
     a.paste(skill_img, (130, 150))
     a = a.resize((238, 333))
 
-    a.save(f"target/{entity['name']}.jpg")
+    a.save(f"target/skills/{entity['name']}.jpg")
     ##########
 
-    add = Image.open(f"target/{entity['name']}.jpg")
+    add = Image.open(f"target/skills/{entity['name']}.jpg")
     edit = ImageDraw.Draw(add)
     w, h = edit.textsize(entity['name'])
     edit.text(((245 - w * 2) / 2, 5), entity['name'], (0, 0, 0), font=name_font)
@@ -106,12 +106,12 @@ def draw_card(entity):
         edit.text(((image_width - line_width) / 2, y_text + 220),
                   line, (0,0,0), font=text_font)
         y_text += line_height
-    add.save(f"target/{entity['name']}.jpg")
+    add.save(f"target/skills/{entity['name']}.jpg")
 
+def generate():
+    with open('db/spells.csv', newline='') as f:
+      reader = pd.read_csv(f)
+      for index, row in reader.iterrows():
+          entity = get_entity(row)
 
-with open('db/spells.csv', newline='') as f:
-  reader = pd.read_csv(f)
-  for index, row in reader.iterrows():
-      entity = get_entity(row)
-
-      draw_card(entity)
+          draw_card(entity)
