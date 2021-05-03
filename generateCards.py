@@ -20,23 +20,17 @@ def draw_card(entity):
     my_image = Image.open(f"imgs/backgrounds/{entity['type']}.jpg").resize((900,1000))
     image = Image.open("imgs/backgrounds/Scroll.jpg").resize((835, 350))
     overhowl = Image.open("imgs/backgrounds/overhoul.jpg")
-    image_editable = ImageDraw.Draw(overhowl)
 
 
     overhowl = overhowl.convert("RGBA")
     ############
-    datas = overhowl.getdata()
-
-    label_font = ImageFont.truetype('fonts/AQS.ttf', 20)
     name_font = ImageFont.truetype('fonts/AQS.ttf', 16)
+    text_font = ImageFont.truetype('fonts/LittleLordFontleroyNF.ttf', 30)
+
     statsFont = ImageFont.truetype('fonts/LittleLordFontleroyNF.ttf', 100)
     valFont = ImageFont.truetype('fonts/LittleLordFontleroyNF.ttf', 85)
 
     my_image = my_image.convert("RGBA")
-
-
-
-
     my_image=my_image.resize((900, 1000))
     overhowl=overhowl.resize((900, 1000))
 
@@ -91,15 +85,27 @@ def draw_card(entity):
     a = a.resize((238, 333))
 
     a.save(f"target/{entity['name']}.jpg")
-        ##########
+    ##########
 
     add = Image.open(f"target/{entity['name']}.jpg")
     edit = ImageDraw.Draw(add)
-    print(str(edit))
-    print(entity['ap_cost'])
+    w, h = edit.textsize(entity['name'])
+    edit.text(((245 - w * 2) / 2, 5), entity['name'], (0, 0, 0), font=name_font)
+
     edit.text((0, -35), entity['ap_cost'], (0, 0, 133), font=statsFont)
-    edit.text((70, 5), entity['name'], (0, 0, 0), font=name_font)
+    # edit.text((70, 5), entity['name'], (0, 0, 0), font=name_font)
     edit.text((195, -35), entity['cooldown'], (0, 0, 0), font=statsFont)
+    text = entity['text']
+
+    image_width, image_height = a.size
+    import textwrap
+    lines = textwrap.wrap(text, width=22)
+    y_text = h
+    for line in lines:
+        line_width, line_height = text_font.getsize(line)
+        edit.text(((image_width - line_width) / 2, y_text + 220),
+                  line, (0,0,0), font=text_font)
+        y_text += line_height
     add.save(f"target/{entity['name']}.jpg")
 
 

@@ -28,11 +28,11 @@ def get_entity(row):
 def draw_card(entity):
     print(entity)
     my_image = Image.open("imgs/Template.jpg")
-    image = Image.open(entity['img_path']).resize((300, 230))
+    image = Image.open(entity['img_path']).resize((453, 323))
 
     ############
 
-    my_image.paste(image, (180, 150))
+    my_image.paste(image, (110, 128))
 
     label_font = ImageFont.truetype('fonts/AQS.ttf', 20)
     name_font = ImageFont.truetype('fonts/AQS.ttf', 26)
@@ -49,20 +49,19 @@ def draw_card(entity):
 
     image_editable.text((700, 790), entity['actions'], (0, 0, 0), font=statsFont)
 
-    str_label = "Strength "
-    image_editable.text((200, 411), str_label, (0, 0, 0), font=label_font)
-
-    image_editable.text((430, 370), entity['str_val'], (0, 0, 0), font=valFont)
+    # image_editable.text((200, 411), str_label, (0, 0, 0), font=label_font)
+    #
+    # image_editable.text((430, 370), entity['str_val'], (0, 0, 0), font=valFont)
 
     intelligence_label = "Intelligence "
     image_editable.text((370, 481), intelligence_label, (0, 0, 0), font=label_font)
 
     image_editable.text((130, 441), entity['int_val'], (0, 0, 0), font=valFont)
 
-    condition_label = "Condition "
-    image_editable.text((200, 551), condition_label, (0, 0, 0), font=label_font)
+    str_label = "Strength "
+    image_editable.text((200, 551), str_label, (0, 0, 0), font=label_font)
 
-    image_editable.text((430, 511), entity['char_val'], (0, 0, 0), font=valFont)
+    image_editable.text((430, 511), entity['str_val'], (0, 0, 0), font=valFont)
 
     charisma_label = "Charisma "
     image_editable.text((370, 621), charisma_label, (0, 0, 0), font=label_font)
