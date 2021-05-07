@@ -24,10 +24,10 @@ def draw_card(entity):
 
     overhowl = overhowl.convert("RGBA")
     ############
-    name_font = ImageFont.truetype('fonts/AQS.ttf', 16)
-    text_font = ImageFont.truetype('fonts/LittleLordFontleroyNF.ttf', 30)
+    name_font = ImageFont.truetype('fonts/Wonderbar Demo.otf', 16)
+    text_font = ImageFont.truetype('fonts/Wonderbar Demo.otf', 15)
 
-    statsFont = ImageFont.truetype('fonts/LittleLordFontleroyNF.ttf', 100)
+    statsFont = ImageFont.truetype('fonts/Wonderbar Demo.otf', 35)
     valFont = ImageFont.truetype('fonts/LittleLordFontleroyNF.ttf', 85)
 
     my_image = my_image.convert("RGBA")
@@ -92,9 +92,9 @@ def draw_card(entity):
     w, h = edit.textsize(entity['name'])
     edit.text(((245 - w * 2) / 2, 5), entity['name'], (0, 0, 0), font=name_font)
 
-    edit.text((0, -35), entity['ap_cost'], (0, 0, 133), font=statsFont)
+    edit.text((8, -9), entity['ap_cost'], (0, 0, 133), font=statsFont)
     # edit.text((70, 5), entity['name'], (0, 0, 0), font=name_font)
-    edit.text((195, -35), entity['cooldown'], (0, 0, 0), font=statsFont)
+    edit.text((205, -9), entity['cooldown'], (0, 0, 0), font=statsFont)
     text = entity['text']
 
     image_width, image_height = a.size
